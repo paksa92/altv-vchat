@@ -8,7 +8,7 @@ export class WindowService {
     private readonly mutedPlayers = new Set<Player>();
 
     public send(player: Player, message: string, type: MessageType = MessageType.Default, sender: string) {
-        if (!validateMessage(message, type, sender)) return;
+        if (!validateMessage(message, type)) return;
         return () => emitClientRaw(player, 'vchat:addMessage', message, type, sender);
     }
 

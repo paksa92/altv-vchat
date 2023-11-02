@@ -22,16 +22,16 @@ export function Messages() {
     // --------------------------------------------------------------
 
     const [messages, setMessages] = useState<Array<MessageData>>([
-        { content: 'Shut yo bitch ass up', type: 4 },
-        { content: 'Stop running like that', type: 1 },
-        { content: 'It would be fair until you did that shit but', type: 3 },
-        { content: 'YO YOU JUST KILLED HIM', type: 5 },
-        { sender: 'AI Chapo', content: 'WTF is you throwing up fooo', type: 0 },
-        { sender: 'anon', content: 'Let me see yo face pffff', type: 0 },
-        { sender: 'Johnny Bravo', content: 'LMAOOOOO', type: 0 },
-        { sender: 'IHaveA VeryLongName', content: 'I rember you nigga', type: 0 },
-        { sender: 'Xi', content: 'SERVER RESTART IN 10 MINUTES!', type: 2 },
-        { content: '<b>AI Chapo</b> appeared in the city.', type: 2 },
+        // { content: 'Shut yo bitch ass up', type: 4 },
+        // { content: 'Stop running like that', type: 1 },
+        // { content: 'It would be fair until you did that shit but', type: 3 },
+        // { content: 'YO YOU JUST KILLED HIM', type: 5 },
+        // { sender: 'AI Chapo', content: 'WTF is you throwing up fooo', type: 0 },
+        // { sender: 'anon', content: 'Let me see yo face pffff', type: 0 },
+        // { sender: 'Johnny Bravo', content: 'LMAOOOOO', type: 0 },
+        // { sender: 'IHaveA VeryLongName', content: 'I rember you nigga', type: 0 },
+        // { sender: 'Xi', content: 'SERVER RESTART IN 10 MINUTES!', type: 2 },
+        // { content: '<b>AI Chapo</b> appeared in the city.', type: 2 },
     ]);
     const [currentScroll, setCurrentScroll] = useState<number>(0);
     const [boxHeight, setBoxHeight] = useState<number>(0);
