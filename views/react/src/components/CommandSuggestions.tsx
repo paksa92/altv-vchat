@@ -128,28 +128,31 @@ export function CommandSuggestions() {
 
     return (
         <div
-            className={classnames('mt-[4px] text-white flex flex-col transition origin-top', {
+            className={classnames('mt-[4px] text-white flex flex-col gap-2 transition origin-top', {
                 'scale-y-100': matchedCommands.length > 0 && focus,
             })}
         >
             {matchedCommands.map((matchedCommand, cmdIndex) => (
                 <div
                     key={cmdIndex}
-                    className={classnames('bg-black px-[16px] py-[8px] transition duration-200 select-none', {
-                        'bg-opacity-50': cmdIndex === selected,
-                        'bg-opacity-30': cmdIndex !== selected,
-                        'hover:bg-opacity-50': cmdIndex !== selected,
-                    })}
+                    className={classnames(
+                        'bg-black rounded-xl px-[16px] py-[8px] transition duration-200 select-none',
+                        {
+                            'bg-opacity-50': cmdIndex === selected,
+                            'bg-opacity-30': cmdIndex !== selected,
+                            'hover:bg-opacity-50': cmdIndex !== selected,
+                        },
+                    )}
                 >
-                    <div className="flex text-base text-white text-opacity-100">
-                        <span className={classnames({ 'font-bold': matchedCommand.currentParam === 0 })}>
+                    <div className="flex text-base text-neutral-60 text-opacity-100">
+                        <span className={classnames({ 'font-bold font-serif': matchedCommand.currentParam === 0 })}>
                             {matchedCommand.name}
                         </span>
                         {(matchedCommand.parameters ?? []).map((param, paramIndex) => (
                             <span
                                 key={paramIndex}
                                 className={classnames('ml-1', {
-                                    'font-bold': matchedCommand.currentParam === paramIndex + 1,
+                                    'font-bold font-serif': matchedCommand.currentParam === paramIndex + 1,
                                 })}
                             >
                                 [{param.name}]

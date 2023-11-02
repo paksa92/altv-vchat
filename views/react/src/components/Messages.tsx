@@ -26,11 +26,11 @@ export function Messages() {
         // { content: 'Stop running like that', type: 1 },
         // { content: 'It would be fair until you did that shit but', type: 3 },
         // { content: 'YO YOU JUST KILLED HIM', type: 5 },
-        // { sender: 'AI Chapo', content: 'WTF is you throwing up fooo', type: 0 },
-        // { sender: 'anon', content: 'Let me see yo face pffff', type: 0 },
-        // { sender: 'Johnny Bravo', content: 'LMAOOOOO', type: 0 },
-        // { sender: 'IHaveA VeryLongName', content: 'I rember you nigga', type: 0 },
-        // { sender: 'Xi', content: 'SERVER RESTART IN 10 MINUTES!', type: 2 },
+        // { 'AI Chapo', content: 'WTF is you throwing up fooo', type: 0 },
+        // { 'anon', content: 'Let me see yo face pffff', type: 0 },
+        // { 'Johnny Bravo', content: 'LMAOOOOO', type: 0 },
+        // { 'IHaveA VeryLongName', content: 'I rember you nigga', type: 0 },
+        // { 'Xi', content: 'SERVER RESTART IN 10 MINUTES!', type: 2 },
         // { content: '<b>AI Chapo</b> appeared in the city.', type: 2 },
     ]);
     const [currentScroll, setCurrentScroll] = useState<number>(0);
@@ -69,9 +69,9 @@ export function Messages() {
      * @param message The message to add.
      * @param type The type of message.
      */
-    function addMessage(message: string, type: MessageType = MessageType.Default, sender: string) {
+    function addMessage(message: string, type: MessageType = MessageType.Default) {
         setMessages((messages) => {
-            const newMessages = [...messages, { content: message, type, sender }];
+            const newMessages = [...messages, { content: message, type }];
             if (messages.length < options.maxMessages) return newMessages;
             return newMessages.splice(newMessages.length - options.maxMessages, options.maxMessages);
         });
@@ -228,7 +228,7 @@ export function Messages() {
             ref={ref}
         >
             {messages.map((message, index) => (
-                <Message key={index} content={message.content} type={message.type} sender={message.sender} />
+                <Message key={index} content={message.content} type={message.type} />
             ))}
         </div>
     );

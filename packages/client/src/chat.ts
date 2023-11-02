@@ -46,11 +46,11 @@ export class Chat {
         this.windowService.toggleFocusEnabled(enabled);
     }
 
-    public addMessageToWindow(message: string, type: MessageType = MessageType.Default, sender: string) {
+    public addMessageToWindow(message: string, type: MessageType = MessageType.Default) {
         if (this.messageHistoryService.getLength() > this.optionsService.get('maxMessageHistory'))
             this.messageHistoryService.removeFirst();
-        this.messageHistoryService.add({ content: message, type, sender });
-        this.windowService.addMessage(message, type, sender);
+        this.messageHistoryService.add({ content: message, type });
+        this.windowService.addMessage(message, type);
     }
 
     public addSuggestionToWindow(suggestion: CommandSuggestion | Array<CommandSuggestion>) {

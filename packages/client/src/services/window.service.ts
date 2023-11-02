@@ -44,8 +44,8 @@ export class WindowService {
         this.webView.isVisible = false;
     }
 
-    public addMessage(message: string, type: MessageType = MessageType.Default, sender?: string) {
-        this.webView.emit('vchat:addMessage', message, type, sender);
+    public addMessage(message: string, type: MessageType = MessageType.Default) {
+        this.webView.emit('vchat:addMessage', message, type);
     }
 
     public loadMessageHistory(messages: Array<Message>) {
