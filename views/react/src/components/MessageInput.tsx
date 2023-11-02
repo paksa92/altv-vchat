@@ -121,10 +121,13 @@ export function MessageInput() {
 
     return (
         <div
-            className={classnames('flex gap-4 bg-black bg-opacity-50 text-base text-white px-[16px] py-[8px] w-full', {
-                invisible: !focus,
-                visible: focus,
-            })}
+            className={classnames(
+                'flex gap-4 rounded-xl bg-black bg-opacity-50 text-sm text-neutral-100 px-3 py-2 w-full font-light',
+                {
+                    invisible: !focus,
+                    visible: focus,
+                },
+            )}
         >
             <input
                 className="bg-transparent focus:outline-none w-full"

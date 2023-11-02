@@ -7,9 +7,9 @@ import { singleton } from 'tsyringe';
 export class WindowService {
     private readonly mutedPlayers = new Set<Player>();
 
-    public send(player: Player, message: string, type: MessageType = MessageType.Default) {
-        if (!validateMessage(message, type)) return;
-        return () => emitClientRaw(player, 'vchat:addMessage', message, type);
+    public send(player: Player, message: string, type: MessageType = MessageType.Default, sender: string) {
+        if (!validateMessage(message, type, sender)) return;
+        return () => emitClientRaw(player, 'vchat:addMessage', message, type, sender);
     }
 
     public show(player: Player) {

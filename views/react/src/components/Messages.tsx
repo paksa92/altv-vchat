@@ -21,7 +21,18 @@ export function Messages() {
     // Local Variables
     // --------------------------------------------------------------
 
-    const [messages, setMessages] = useState<Array<MessageData>>([]);
+    const [messages, setMessages] = useState<Array<MessageData>>([
+        { content: 'Shut yo bitch ass up', type: 4 },
+        { content: 'Stop running like that', type: 1 },
+        { content: 'It would be fair until you did that shit but', type: 3 },
+        { content: 'YO YOU JUST KILLED HIM', type: 5 },
+        { sender: 'AI Chapo', content: 'WTF is you throwing up fooo', type: 0 },
+        { sender: 'anon', content: 'Let me see yo face pffff', type: 0 },
+        { sender: 'Johnny Bravo', content: 'LMAOOOOO', type: 0 },
+        { sender: 'IHaveA VeryLongName', content: 'I rember you nigga', type: 0 },
+        { sender: 'Xi', content: 'SERVER RESTART IN 10 MINUTES!', type: 2 },
+        { content: '<b>AI Chapo</b> appeared in the city.', type: 2 },
+    ]);
     const [currentScroll, setCurrentScroll] = useState<number>(0);
     const [boxHeight, setBoxHeight] = useState<number>(0);
     const [clientHeight, setClientHeight] = useState<number>(0);
@@ -58,9 +69,9 @@ export function Messages() {
      * @param message The message to add.
      * @param type The type of message.
      */
-    function addMessage(message: string, type: MessageType = MessageType.Default) {
+    function addMessage(message: string, type: MessageType = MessageType.Default, sender: string) {
         setMessages((messages) => {
-            const newMessages = [...messages, { content: message, type }];
+            const newMessages = [...messages, { content: message, type, sender }];
             if (messages.length < options.maxMessages) return newMessages;
             return newMessages.splice(newMessages.length - options.maxMessages, options.maxMessages);
         });
@@ -203,7 +214,7 @@ export function Messages() {
 
     return (
         <div
-            className={classnames('scrollbar mask flex flex-col gap-[4px] h-[320px] w-full mask mb-[16px] pr-2', {
+            className={classnames('scrollbar mask flex flex-col gap-2.5 h-[320px] w-full mask mb-[16px] pr-2', {
                 'opacity-50': !focus,
                 'opacity-100': focus,
             })}
@@ -217,7 +228,7 @@ export function Messages() {
             ref={ref}
         >
             {messages.map((message, index) => (
-                <Message key={index} content={message.content} type={message.type} />
+                <Message key={index} content={message.content} type={message.type} sender={message.sender} />
             ))}
         </div>
     );

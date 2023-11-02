@@ -48,13 +48,16 @@ export class Chat {
                     .replace('{0}', cmdName);
                 this.mountService.waitForMount(
                     player,
-                    this.windowService.send(player, unknownCommandMessage, MessageType.Error),
+                    this.windowService.send(player, unknownCommandMessage, MessageType.Error, player.name),
                 );
             }
         } else {
             if (this.windowService.isMuted(player)) {
                 const muteMessage = this.optionsService.getOption('muteMessage');
-                this.mountService.waitForMount(player, this.windowService.send(player, muteMessage, MessageType.Error));
+                this.mountService.waitForMount(
+                    player,
+                    this.windowService.send(player, muteMessage, MessageType.Error, player.name),
+                );
                 return;
             }
 
@@ -75,7 +78,7 @@ export class Chat {
             message = this.processMessage(message);
 
             Player.all.forEach((player) =>
-                this.mountService.waitForMount(player, this.windowService.send(player, message)),
+                this.mountService.waitForMount(player, this.windowService.send(player, message, 0, player.name)),
             );
         }
     }

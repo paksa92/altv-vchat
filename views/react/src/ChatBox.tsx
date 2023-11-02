@@ -59,7 +59,7 @@ export function ChatBox() {
     useEffect(() => window?.alt?.emit('vchat:requestSettings'), []);
 
     return (
-        <div className="fixed top-[16px] left-[16px] w-[640px]">
+        <div className="fixed top-1/2 -translate-y-1/2 right-[16px] w-[500px]">
             <Messages />
             <MessageInput />
             <CommandSuggestions />
